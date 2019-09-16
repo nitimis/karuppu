@@ -1,0 +1,27 @@
+{
+  "name": "karuppu",
+  "version": "0.1.0",
+  "description": "A bulma Dark theme based on BulmaSwatch's Cyborg",
+  "main": "index.js",
+  "repository": "https://github.com/nitimis/karuppu",
+  "author": "Nitimis",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^9.6.1",
+    "bulma": "^0.7.5",
+    "clean-css-cli": "^4.3.0",
+    "node-sass": "^4.12.0",
+    "postcss": "^7.0.18",
+    "postcss-cli": "^6.1.3",
+    "rimraf": "^3.0.0"
+  },
+  "scripts": {
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
+    "build-autoprefix": "postcss --use autoprefixer --map false --output css/karuppu.css css/karuppu.css",
+    "build-cleancss": "cleancss -o css/karuppu.min.css css/karuppu.css",
+    "build-clean": "rimraf css",
+    "build-sass": "node-sass --output-style expanded --source-map true karuppu.sass css/karuppu.css",
+    "deploy": "npm run build",
+    "start": "npm run build-sass -- --watch"
+  }
+}
